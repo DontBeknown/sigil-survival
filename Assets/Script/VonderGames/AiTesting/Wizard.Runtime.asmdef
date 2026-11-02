@@ -1,0 +1,6 @@
+{
+    "name": "Wizard.Runtime",
+    "rootNamespace": "VonderGames.AiTesting",
+    "references": ["Unity.InputSystem", "Unity.Cinemachine", "Unity.TextMeshPro", "Unity.ugui", "DOTween.Modules"],
+    "autoReferenced": true
+}

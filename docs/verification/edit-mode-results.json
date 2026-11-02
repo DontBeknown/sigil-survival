@@ -1,0 +1,62 @@
+{
+  "status": "completed",
+  "duration": 0.39,
+  "summary": {
+    "total": 7,
+    "passed": 7,
+    "failed": 0,
+    "skipped": 0,
+    "inconclusive": 0
+  },
+  "results": [
+    {
+      "FullName": "VonderGames.AiTesting.Tests.WizardCoreTests.ChoicesAreDistinctAndHealingRemainsWhenRanksExhausted",
+      "Status": "Passed",
+      "Duration": 0.0171701,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "VonderGames.AiTesting.Tests.WizardCoreTests.CooldownRanksMultiplyAndNeverMutateDefinition",
+      "Status": "Passed",
+      "Duration": 0.001228,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "VonderGames.AiTesting.Tests.WizardCoreTests.ExperiencePreservesOverflowAndQueuesEachLevel",
+      "Status": "Passed",
+      "Duration": 0.0001885,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "VonderGames.AiTesting.Tests.WizardCoreTests.PrimitiveSpriteHasPersistentTextureAfterImport",
+      "Status": "Passed",
+      "Duration": 0.0052432,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "VonderGames.AiTesting.Tests.WizardCoreTests.SaveFailureIsReportedAndDoesNotThrow",
+      "Status": "Passed",
+      "Duration": 0.003377,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "VonderGames.AiTesting.Tests.WizardCoreTests.SaveSurvivesNewServiceAndRecoversCorruptPrimary",
+      "Status": "Passed",
+      "Duration": 0.0258755,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "VonderGames.AiTesting.Tests.WizardCoreTests.UnlockCannotBeOfferedTwiceAndResetRestoresDefaults",
+      "Status": "Passed",
+      "Duration": 0.0006305,
+      "Message": null,
+      "StackTrace": null
+    }
+  ]
+}

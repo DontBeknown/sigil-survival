@@ -1,0 +1,5 @@
+{
+    "name": "Wizard.PlayMode.Tests",
+    "references": ["Wizard.Runtime", "Unity.InputSystem", "Unity.ugui", "Unity.Cinemachine", "Unity.TextMeshPro"],
+    "optionalUnityReferences": ["TestAssemblies"]
+}

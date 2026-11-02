@@ -1,0 +1,6 @@
+{
+    "name": "Wizard.EditMode.Tests",
+    "references": ["Wizard.Runtime", "Unity.ugui", "Unity.InputSystem"],
+    "includePlatforms": ["Editor"],
+    "optionalUnityReferences": ["TestAssemblies"]
+}

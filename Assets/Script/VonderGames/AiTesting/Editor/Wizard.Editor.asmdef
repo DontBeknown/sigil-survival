@@ -1,0 +1,5 @@
+{
+    "name": "Wizard.Editor",
+    "references": ["Wizard.Runtime", "Unity.InputSystem", "Unity.InputSystem.Editor", "Unity.Cinemachine", "Unity.TextMeshPro", "Unity.ugui"],
+    "includePlatforms": ["Editor"]
+}

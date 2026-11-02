@@ -1,0 +1,83 @@
+{
+  "status": "completed",
+  "duration": 10.77,
+  "summary": {
+    "total": 10,
+    "passed": 10,
+    "failed": 0,
+    "skipped": 0,
+    "inconclusive": 0
+  },
+  "results": [
+    {
+      "FullName": "VonderGames.AiTesting.Tests.WizardGameplayTests.BossSpawnsOnceAndDeathAwardsVictory",
+      "Status": "Passed",
+      "Duration": 0.871651,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "VonderGames.AiTesting.Tests.WizardGameplayTests.BossTelegraphsBeforeChargeAndStaysInsideArena",
+      "Status": "Passed",
+      "Duration": 3.8264079,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "VonderGames.AiTesting.Tests.WizardGameplayTests.DamageInvulnerabilityAndRetryResetAllRunState",
+      "Status": "Passed",
+      "Duration": 1.1111073,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "VonderGames.AiTesting.Tests.WizardGameplayTests.HeldMenuClickCannotCastAfterResume",
+      "Status": "Passed",
+      "Duration": 0.5920024,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "VonderGames.AiTesting.Tests.WizardGameplayTests.HostileProjectileHittingWallCannotDamagePlayer",
+      "Status": "Passed",
+      "Duration": 0.7786671,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "VonderGames.AiTesting.Tests.WizardGameplayTests.NewInputSystemMovesDiagonallyAtNormalizedSpeed",
+      "Status": "Passed",
+      "Duration": 0.5556421,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "VonderGames.AiTesting.Tests.WizardGameplayTests.PauseFreezesTimersAndDisablesCombatInput",
+      "Status": "Passed",
+      "Duration": 0.7012246,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "VonderGames.AiTesting.Tests.WizardGameplayTests.QueuedUpgradesResumeOnlyAfterLastSelection",
+      "Status": "Passed",
+      "Duration": 0.5318715,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "VonderGames.AiTesting.Tests.WizardGameplayTests.SweptBoltDamagesTargetOnce",
+      "Status": "Passed",
+      "Duration": 0.7878856,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "VonderGames.AiTesting.Tests.WizardGameplayTests.UnlocksEnableAreaSpellsAndPreserveAuthoredDamage",
+      "Status": "Passed",
+      "Duration": 0.919465,
+      "Message": null,
+      "StackTrace": null
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "tool": "check_unity_project",
+  "schema": 1,
+  "root": "D:/Unity/Projects/LAB/AI_TESTING",
+  "files_checked": 290,
+  "error_count": 4,
+  "warning_count": 0,
+  "errors": [
+    {
+      "code": "missing-script",
+      "file": "Assets/Settings/DefaultVolumeProfile.asset",
+      "line": 78,
+      "message": "script reference points to GUID 60f3b30c03e6ba64d9a27dc9dba8f28d, which no .meta in the project has",
+      "fix": "if the .cs file was moved or renamed, put its original .meta (guid: 60f3b30c03e6ba64d9a27dc9dba8f28d) back next to it; otherwise restore the script, or remove the missing component in the Unity Editor"
+    },
+    {
+      "code": "missing-script",
+      "file": "Assets/Settings/DefaultVolumeProfile.asset",
+      "line": 119,
+      "message": "script reference points to GUID 0fd9ee276a1023e439cf7a9c393195fa, which no .meta in the project has",
+      "fix": "if the .cs file was moved or renamed, put its original .meta (guid: 0fd9ee276a1023e439cf7a9c393195fa) back next to it; otherwise restore the script, or remove the missing component in the Unity Editor"
+    },
+    {
+      "code": "missing-script",
+      "file": "Assets/Settings/DefaultVolumeProfile.asset",
+      "line": 264,
+      "message": "script reference points to GUID 5a00a63fdd6bd2a45ab1f2d869305ffd, which no .meta in the project has",
+      "fix": "if the .cs file was moved or renamed, put its original .meta (guid: 5a00a63fdd6bd2a45ab1f2d869305ffd) back next to it; otherwise restore the script, or remove the missing component in the Unity Editor"
+    },
+    {
+      "code": "missing-script",
+      "file": "Assets/Settings/DefaultVolumeProfile.asset",
+      "line": 832,
+      "message": "script reference points to GUID 74955a4b0b4243bc87231e8b59ed9140, which no .meta in the project has",
+      "fix": "if the .cs file was moved or renamed, put its original .meta (guid: 74955a4b0b4243bc87231e8b59ed9140) back next to it; otherwise restore the script, or remove the missing component in the Unity Editor"
+    }
+  ],
+  "warnings": [],
+  "truncated": false
+}

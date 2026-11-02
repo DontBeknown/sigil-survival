@@ -1,0 +1,14 @@
+{
+    "Samples": 936,
+    "MinimumEnemies": 150,
+    "MinimumProjectiles": 200,
+    "AverageFrameMs": 12.826703203260962,
+    "P95FrameMs": 14.86169919371605,
+    "AverageMainThreadMs": 12.805986324786306,
+    "P95MainThreadMs": 14.8429,
+    "AverageGcBytes": 20976.965811965812,
+    "MaximumGcBytes": 54700,
+    "Machine": "AMD Ryzen 7 6800H with Radeon Graphics  / NVIDIA GeForce RTX 3060 Laptop GPU",
+    "Resolution": "1920x1080",
+    "Notes": "Editor-only measurement; 3s warmup, 12s sample, uncapped. Main Thread includes Editor overhead and synchronization. GPU timing not measured."
+}
