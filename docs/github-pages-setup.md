@@ -2,9 +2,11 @@
 
 This project is currently a Unity source project. GitHub Pages needs a **Web**
 player build; it cannot run the Unity Editor project directly. The repository is
-`DontBeknown/AI_TESTING`, so its default Pages address will be
-`https://dontbeknown.github.io/AI_TESTING/`. The repository name and code
-namespaces can stay as they are.
+`DontBeknown/sigil-survival`, so its default Pages address will be
+`https://dontbeknown.github.io/sigil-survival/`. The code namespaces can stay
+as they are. The repository is private; [GitHub Pages availability](https://docs.github.com/en/pages/getting-started-with-github-pages/creating-a-github-pages-site)
+requires a public repository on GitHub Free or an eligible plan for private
+repository Pages.
 
 ## 1. Make a Web build
 
@@ -89,7 +91,7 @@ explains the deployment actions and permissions.
   uploaded folder and that Pages is set to **GitHub Actions**.
 - **Compression or `.wasm` error:** Rebuild with **Compression Format: Disabled**
   and commit the entire fresh build, including its generated `index.html`.
-- **Missing assets under `/AI_TESTING/`:** Publish Unity's generated build folder
+- **Missing assets under `/sigil-survival/`:** Publish Unity's generated build folder
   intact. Do not move only `index.html`; its relative `Build/` and
   `TemplateData/` paths must stay beside it.
 

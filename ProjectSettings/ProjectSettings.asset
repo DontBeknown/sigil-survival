@@ -872,7 +872,7 @@ PlayerSettings:
   metroCertificateSubject: 
   metroCertificateIssuer: 
   metroCertificateNotAfter: 0000000000000000
-  metroApplicationDescription: AI_TESTING
+  metroApplicationDescription: Sigil Survival
   wsaImages: {}
   metroTileShortName: 
   metroTileShowName: 0

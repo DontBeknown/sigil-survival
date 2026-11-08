@@ -67,5 +67,5 @@
         "*.sln": "*.csproj",
         "*.slnx": "*.csproj"
     },
-    "dotnet.defaultSolution": "AI_TESTING.slnx"
+    "dotnet.defaultSolution": "SigilSurvival.slnx"
 }

@@ -1,4 +1,4 @@
-# AI Testing — Wizard Survival
+# Sigil Survival
 
 Use the `vonder-unity-project` skill and its standards/code/scene references as the
 project standard. Unity 6000.3.15f1, URP, Input System 1.19, Cinemachine 3.1.7,
