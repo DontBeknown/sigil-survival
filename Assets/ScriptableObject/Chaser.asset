@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2a011002929a0b41a29398d1c70101e, type: 3}
   m_Name: Chaser
   m_EditorClassIdentifier: Wizard.Runtime::VonderGames.AiTesting.Core.EnemyDefinition
-  _health: 40
+  _health: 20
   _speed: 2.5
   _damage: 10
   _attackCooldown: 1
@@ -20,3 +20,7 @@ MonoBehaviour:
   _size: 0.9
   _color: {r: 1, g: 0.35, b: 0.4, a: 1}
   _isBoss: 0
+  _isRanged: 0
+  _preferredMinimum: 5
+  _preferredMaximum: 7
+  _aimDuration: 0.35

@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7851960cc8484bc4197debbe2e55da57, type: 3}
+  m_Name: DefaultCombat
+  m_EditorClassIdentifier: Wizard.Runtime::VonderGames.AiTesting.Core.CombatDefinition
+  _dashDistance: 3
+  _dashDuration: 0.18
+  _dashCooldown: 0.8
+  _perfectWindow: 0.12
+  _perfectScale: 0.2
+  _perfectDuration: 0.6
+  _perfectHealFraction: 0.1
+  _bossHealthPerLevel: 0.15
+  _deflectWindow: 0.12
+  _deflectCooldown: 4
+  _deflectDamage: 40
+  _deflectRadius: 3
+  _reflectedDamage: 60
+  _rangedStart: 60
+  _rangedEnemyCap: 5
+  _launchInterval: 0.65
+  _hostileSpeed: 26
+  _hostileRadius: 0.3
+  _hostileLifetime: 3
+  _fireWidth: 0.42
+  _fireExplosionRadius: 1.8
+  _thunderRange: 9
+  _thunderLinkRange: 4.5
+  _thunderLinkRangePerRank: 0.75
+  _experienceMultiplier: 3
+  _revealDuration: 1

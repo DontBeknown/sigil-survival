@@ -13,9 +13,11 @@ MonoBehaviour:
   m_Name: Bolt
   m_EditorClassIdentifier: Wizard.Runtime::VonderGames.AiTesting.Core.SpellDefinition
   _kind: 0
-  _displayName: Arcane Bolt
-  _damage: 20
-  _cooldown: 0.35
+  _displayName: Wand Bolt
+  _damage: 10
+  _cooldown: 0.6
   _speed: 24
   _radius: 0
-  _color: {r: 0.25, g: 0.8, b: 1, a: 1}
+  _color: {r: 0.3, g: 0.85, b: 1, a: 1}
+  _damageIncrement: 0
+  _secondaryIncrement: 0

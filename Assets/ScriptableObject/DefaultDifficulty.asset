@@ -12,24 +12,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8f49809a775e594fb6fdc0ef2d96b75, type: 3}
   m_Name: DefaultDifficulty
   m_EditorClassIdentifier: Wizard.Runtime::VonderGames.AiTesting.Core.DifficultyDefinition
-  _bossTime: 600
+  _bossTime: 300
   _enemyCap: 150
   _phases:
   - StartTime: 0
     SpawnsPerSecond: 1
     EnemyTypes: 1
-  - StartTime: 60
+  - StartTime: 30
     SpawnsPerSecond: 1.5
     EnemyTypes: 1
-  - StartTime: 120
+  - StartTime: 60
     SpawnsPerSecond: 2.5
     EnemyTypes: 2
-  - StartTime: 240
+  - StartTime: 120
     SpawnsPerSecond: 3.5
     EnemyTypes: 2
-  - StartTime: 300
+  - StartTime: 150
     SpawnsPerSecond: 4.5
     EnemyTypes: 3
-  - StartTime: 480
+  - StartTime: 240
     SpawnsPerSecond: 6
     EnemyTypes: 3

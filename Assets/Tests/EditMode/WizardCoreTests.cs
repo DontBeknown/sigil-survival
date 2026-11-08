@@ -22,76 +22,105 @@ namespace VonderGames.AiTesting.Tests
         public void ExperiencePreservesOverflowAndQueuesEachLevel()
         {
             var progress = new RunProgress();
-            progress.AddExperience(40);
+            progress.AddExperience(24);
             Assert.That(progress.Level, Is.EqualTo(3));
-            Assert.That(progress.Experience, Is.EqualTo(15));
+            Assert.That(progress.Experience, Is.EqualTo(10));
             Assert.That(progress.PendingChoices, Is.EqualTo(2));
-            Assert.That(progress.RequiredExperience, Is.EqualTo(20));
+            Assert.That(progress.RequiredExperience, Is.EqualTo(15));
         }
 
         [Test]
-        public void UnlockCannotBeOfferedTwiceAndResetRestoresDefaults()
+        public void ElementRanksContinueBeyondFormerCapAndReset()
         {
-            var upgrade = CreateUpgrade(UpgradeKind.Fireball, 1);
+            var upgrade = CreateUpgrade(UpgradeKind.Fire);
             try
             {
                 var progress = new RunProgress();
                 Assert.That(progress.IsEligible(upgrade), Is.False);
-                progress.AddExperience(40);
-                Assert.That(progress.TryApply(upgrade), Is.True);
-                Assert.That(progress.IsUnlocked(SpellKind.Fireball), Is.True);
-                Assert.That(progress.IsEligible(upgrade), Is.False);
-                Assert.That(progress.TryApply(upgrade), Is.False);
+                progress.AddExperience(100000);
+                for (int i = 0; i < 50; i++) Assert.That(progress.TryApply(upgrade), Is.True);
+                Assert.That(progress.GetSpellRank(SpellKind.Fire), Is.EqualTo(50));
+                Assert.That(progress.IsEligible(upgrade), Is.True);
                 progress.Reset();
-                Assert.That(progress.IsUnlocked(SpellKind.Fireball), Is.False);
-                Assert.That(progress.Level, Is.EqualTo(1));
+                Assert.That(progress.IsUnlocked(SpellKind.Fire), Is.False);
                 Assert.That(progress.PendingChoices, Is.Zero);
             }
             finally { UnityEngine.Object.DestroyImmediate(upgrade); }
         }
 
         [Test]
-        public void CooldownRanksMultiplyAndNeverMutateDefinition()
+        public void EveryChoiceRemainsAvailableAtHighRanks()
         {
-            var upgrade = CreateUpgrade(UpgradeKind.Cooldown, 5);
+            var fire = CreateUpgrade(UpgradeKind.Fire);
+            var water = CreateUpgrade(UpgradeKind.Water);
+            var thunder = CreateUpgrade(UpgradeKind.Thunder);
             try
             {
                 var progress = new RunProgress();
-                progress.AddExperience(1000);
-                for (int i = 0; i < 5; i++) Assert.That(progress.TryApply(upgrade), Is.True);
-                Assert.That(progress.CooldownMultiplier, Is.EqualTo(0.59049f).Within(0.00001f));
-                Assert.That(progress.TryApply(upgrade), Is.False);
-                Assert.That(upgrade.MaximumRank, Is.EqualTo(5));
-            }
-            finally { UnityEngine.Object.DestroyImmediate(upgrade); }
-        }
-
-        [Test]
-        public void ChoicesAreDistinctAndHealingRemainsWhenRanksExhausted()
-        {
-            var damage = CreateUpgrade(UpgradeKind.Damage, 1);
-            var speed = CreateUpgrade(UpgradeKind.Movement, 1);
-            var healing = CreateUpgrade(UpgradeKind.Healing, 5);
-            try
-            {
-                var progress = new RunProgress();
-                progress.AddExperience(1000);
-                var choices = progress.GetChoices(new[] { damage, speed, healing }, new System.Random(1));
+                progress.AddExperience(100000);
+                for (int i = 0; i < 20; i++)
+                {
+                    progress.TryApply(fire);
+                    progress.TryApply(water);
+                    progress.TryApply(thunder);
+                }
+                var choices = progress.GetChoices(new[] { fire, water, thunder }, new System.Random(1));
                 Assert.That(choices.Count, Is.EqualTo(3));
-                CollectionAssert.AllItemsAreUnique(choices);
-                progress.TryApply(damage);
-                progress.TryApply(speed);
-                choices = progress.GetChoices(new[] { damage, speed, healing }, new System.Random(1));
-                Assert.That(choices, Is.EqualTo(new[] { healing }));
-                Assert.That(progress.TryApply(healing), Is.True);
-                Assert.That(progress.IsEligible(healing), Is.True);
+                Assert.That(choices[0].IsSkill, Is.True);
+                Assert.That(choices[1].IsSkill || choices[2].IsSkill, Is.False);
+                Assert.That(choices[1].Kind, Is.Not.EqualTo(choices[2].Kind));
+                Assert.That(progress.StunDuration, Is.EqualTo(3));
             }
             finally
             {
-                UnityEngine.Object.DestroyImmediate(damage);
-                UnityEngine.Object.DestroyImmediate(speed);
-                UnityEngine.Object.DestroyImmediate(healing);
+                UnityEngine.Object.DestroyImmediate(fire);
+                UnityEngine.Object.DestroyImmediate(water);
+                UnityEngine.Object.DestroyImmediate(thunder);
             }
+        }
+
+        [TestCase(SpellKind.Fire)]
+        [TestCase(SpellKind.Water)]
+        [TestCase(SpellKind.Thunder)]
+        [TestCase(SpellKind.Deflect)]
+        public void FastSegmentsReachOrderedCheckpoints(SpellKind kind)
+        {
+            var trace = new GestureTrace();
+            trace.Reset(kind);
+            Assert.That(trace.Begin(trace.Points[0]), Is.True);
+            for (int i = 1; i < trace.Points.Length; i++) trace.Move(trace.Points[i]);
+            Assert.That(trace.IsComplete, Is.True);
+            Assert.That(trace.HasFailed, Is.False);
+        }
+
+        [Test]
+        public void SkippingCheckpointRejectsTrace()
+        {
+            var trace = new GestureTrace();
+            trace.Reset(SpellKind.Fire);
+            trace.Begin(trace.Points[0]);
+            trace.Move(trace.Points[2]);
+            Assert.That(trace.HasFailed, Is.True);
+            Assert.That(trace.IsComplete, Is.False);
+        }
+
+        [Test]
+        public void ComboHonorsOrderingRefreshAndExpiry()
+        {
+            var combo = new SpellCombo();
+            Assert.That(combo.Cast(SpellKind.Thunder), Is.False);
+            combo.Cast(SpellKind.Water);
+            combo.Advance(2);
+            combo.Cast(SpellKind.Bolt);
+            Assert.That(combo.Remaining, Is.EqualTo(1));
+            Assert.That(combo.Cast(SpellKind.Thunder), Is.True);
+            Assert.That(combo.Cast(SpellKind.Thunder), Is.False);
+            combo.Cast(SpellKind.Water);
+            combo.Cast(SpellKind.Fire);
+            Assert.That(combo.Cast(SpellKind.Thunder), Is.False);
+            combo.Cast(SpellKind.Water);
+            combo.Advance(4);
+            Assert.That(combo.Cast(SpellKind.Thunder), Is.False);
         }
 
         [Test]
@@ -133,11 +162,10 @@ namespace VonderGames.AiTesting.Tests
             finally { File.Delete(path); }
         }
 
-        private static UpgradeDefinition CreateUpgrade(UpgradeKind kind, int maximumRank)
+        private static UpgradeDefinition CreateUpgrade(UpgradeKind kind)
         {
             var upgrade = ScriptableObject.CreateInstance<UpgradeDefinition>();
             typeof(UpgradeDefinition).GetField("_kind", BindingFlags.Instance | BindingFlags.NonPublic).SetValue(upgrade, kind);
-            typeof(UpgradeDefinition).GetField("_maximumRank", BindingFlags.Instance | BindingFlags.NonPublic).SetValue(upgrade, maximumRank);
             return upgrade;
         }
     }

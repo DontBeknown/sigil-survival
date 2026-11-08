@@ -16,36 +16,18 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "Aim",
-                    "type": "Value",
-                    "id": "b6c6071b-c335-4fe7-8878-fe59d0b98111",
-                    "expectedControlType": "Vector2",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": true
-                },
-                {
-                    "name": "Bolt",
+                    "name": "Dash",
                     "type": "Button",
-                    "id": "1d706060-b8af-4eb9-badd-f73c407c46e5",
+                    "id": "275df687-0ea1-4da3-aad6-fda4cec392bd",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Fireball",
+                    "name": "Deflect",
                     "type": "Button",
-                    "id": "a682cb7a-a033-4a67-97a9-6341a16f8278",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Nova",
-                    "type": "Button",
-                    "id": "f4486beb-fd5c-4003-9105-9bb374e819a3",
+                    "id": "16be94ca-2bfd-410a-a192-af83a6539db6",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -165,45 +147,23 @@
                 },
                 {
                     "name": "",
-                    "id": "82e6bb85-20df-4f2f-ac7b-530b82be7153",
-                    "path": "<Mouse>/position",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Aim",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "c399087e-a45f-4e0e-a740-34f93b40519a",
-                    "path": "<Mouse>/leftButton",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Bolt",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "a6e22e0a-afe1-4e26-b37c-5414a9548df1",
-                    "path": "<Mouse>/rightButton",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Fireball",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "12cab254-4ef8-4442-a8ce-a3d98cf5ea1d",
+                    "id": "7db5f57b-3e93-4e41-a6fc-4d0502b53c7d",
                     "path": "<Keyboard>/space",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Nova",
+                    "action": "Dash",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b1113e5f-edef-4b11-b3d6-b11b5d42015a",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Deflect",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
@@ -326,6 +286,15 @@
                     "name": "Choice3",
                     "type": "Button",
                     "id": "2f944104-9d26-4c34-9181-f493142a620c",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Choice4",
+                    "type": "Button",
+                    "id": "3f8760cf-a067-4a91-953e-b20e5466d2b7",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -457,7 +426,7 @@
                 {
                     "name": "",
                     "id": "59c06cf5-807b-4ca8-bec1-ff8a2aa1a57b",
-                    "path": "<Keyboard>/digit1",
+                    "path": "<Keyboard>/1",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -468,7 +437,7 @@
                 {
                     "name": "",
                     "id": "a4e6d251-f484-496d-a54f-bbb078e22d0a",
-                    "path": "<Keyboard>/digit2",
+                    "path": "<Keyboard>/2",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -479,11 +448,66 @@
                 {
                     "name": "",
                     "id": "3985bf4c-5b23-4fb3-aab7-af736fc261f1",
-                    "path": "<Keyboard>/digit3",
+                    "path": "<Keyboard>/3",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "Choice3",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "986f8be0-f001-4079-a50a-16c549fa6e80",
+                    "path": "<Keyboard>/numpad1",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Choice1",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "0f25824c-ebf8-4634-8938-cb5d0b2353ca",
+                    "path": "<Keyboard>/numpad2",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Choice2",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "549d9ab1-1569-4713-9929-101188f16ded",
+                    "path": "<Keyboard>/numpad3",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Choice3",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "542609b1-a104-4b87-aea9-1daff6eee7f1",
+                    "path": "<Keyboard>/4",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Choice4",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "9546b59e-349c-41a5-8453-a767168d734e",
+                    "path": "<Keyboard>/numpad4",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Choice4",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
