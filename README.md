@@ -1,52 +1,40 @@
-# Square Wizard
+# Sigil Survival
 
-A true 2D wizard survival prototype in Unity **6000.3.15f1**. Open
+A 2D wizard survival prototype built with Unity **6000.3.15f1**. Open
 `Assets/Scene/Initialize.unity`, press Play, and select **Begin run**.
+
+The wand fires automatically. Move through the arena, collect XP, choose upgrades,
+and defeat the Warden after five combat minutes.
 
 | Input | Action |
 | --- | --- |
 | WASD / arrow keys | Move |
-| Mouse | Aim |
-| Hold left mouse | Arcane Bolt |
-| Hold right mouse | Fireball, after unlocking |
-| Hold Space | Frost Nova, after unlocking |
-| Escape | Pause/resume or return from a settings/controls panel |
-| 1 / 2 / 3 | Choose an upgrade |
-| Tab / arrows / Enter | Navigate and submit menu choices |
+| Space | Dash |
+| 1 / 2 / 3 or HUD slots | Select Fire / Water / Thunder, then hold and trace the numbered points |
+| Right mouse / 4 | Deflect an incoming shot, then trace the diamond |
+| Escape | Cancel a trace or pause |
 
-Collect green squares for XP. Level-ups pause combat and offer upgrades, including
-Fireball and Frost Nova unlocks. Survive ten minutes, then defeat the Warden to win.
-The Warden telegraphs a charge and a radial projectile burst, with faster recovery
-below half health. Every retry starts a fresh run.
+Elemental spells are learned through upgrades. Water followed by Thunder triggers
+Shatter Storm. Deflect is available from the start. The game uses primitive art,
+the Input System, Cinemachine, DOTween, uGUI, and TextMeshPro.
 
-The arena, player, enemies, spells, and feedback use built-in primitive shapes.
-The game uses the new Input System, Cinemachine 3, DOTween, uGUI, and TextMeshPro.
-No custom art, Animator content, sound, builds, or publishing are included.
+## Project
 
-## Editing
-
-- Configuration: `Assets/ScriptableObject` contains editable spells, enemies,
-  upgrades, and the difficulty timeline. Runtime progress does not modify these assets.
-- Reusable objects and UI: `Assets/Prefab`.
-- Code: `Assets/Script/VonderGames/AiTesting`, following Vonder/AWL conventions.
-- Input: `Assets/InputSystem/InputActions.inputactions`. Its original GUID is
-  preserved; Unity generates the wrapper. `InputManager` owns one shared runtime copy.
-- Collision layers: Player (8), Enemy (9), Arena (10). Enemies separate using local
-  steering instead of enemy-to-enemy physics collisions.
-- Entry scene: `Initialize`. The template `SampleScene` is preserved.
+- Entry scene: `Assets/Scene/Initialize.unity` (the only enabled build scene).
+- Code: `Assets/Script/Wizard/AiTesting`. The established
+  `VonderGames.AiTesting` namespaces and asset GUIDs are retained.
+- Editable combat, spell, enemy, upgrade, and difficulty data:
+  `Assets/ScriptableObject`.
+- Runtime ownership: [architecture](docs/runtime-architecture.md).
+- Web publishing: [GitHub Pages setup](docs/github-pages-setup.md).
 
 Settings and personal bests are stored in `wizard-survival.json` under Unity's
-`Application.persistentDataPath`, with temporary-file writes and backup recovery.
-There is no permanent power progression or run resume. When upgrade ranks are
-exhausted, the panel offers remaining valid choices and repeatable healing rather
-than duplicate or invalid cards.
+`Application.persistentDataPath`. Existing saves under the earlier `AI_TESTING`
+product directory remain in use when present.
 
 ## Verification
 
 Use Unity's Test Runner for the `Wizard.EditMode.Tests` and
-`Wizard.PlayMode.Tests` assemblies. See `docs/wizard-verification.md` for measured
-results, the Editor stress scenario, and known limitations.
-
-The older `docs/wizard-survival-design.md` records a different, earlier design;
-this implementation follows the manual-casting, ten-minute boss plan approved
-in this chat.
+`Wizard.PlayMode.Tests` assemblies. See [verification](docs/wizard-verification.md)
+for recorded results and known limits. The current survival update has not been
+verified through a player build.

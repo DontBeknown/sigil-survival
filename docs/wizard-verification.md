@@ -1,3 +1,7 @@
+> Historical report for the previous mouse-aimed combat implementation.
+> The elemental-combat revision changes these behaviors and test cases.
+> Its tests, Play Mode, validators, and profiling have not been run.
+
 # Wizard prototype verification
 
 Verified in the connected Unity 6000.3.15f1 Editor on 2 November 2026.
@@ -79,3 +83,67 @@ an uninterrupted ten-minute human playthrough and an uncoached external playtest
 were not performed. Balance values remain prototype defaults. Once ranks are
 exhausted, fewer than three distinct valid options may remain; repeatable healing
 is offered without duplicating cards.
+
+## Survival update — pending acceptance
+
+The survival update adds source coverage in WizardUpdateTests (Edit Mode) and
+WizardGameplayTests (Play Mode). Those tests have been authored but not run.
+Earlier reports do not verify this revision. Do not run this checklist or any
+verification tooling without a separate explicit request.
+
+| Area | Later acceptance scenario |
+| --- | --- |
+| Dash | Capture mouse direction once; move exactly three units; stop at a wall; cross enemies; cooldown nudge produces no launch effect. Repeat while drawing and during perfect-dodge slow motion. |
+| Crossings | Fire a fast shot across a moving player's hitbox; first 0.10 player seconds reward once, later immunity only. Continue the projectile through the player. Intercept the same shot again without another reward. |
+| Scheduling | Spawn several eligible ranged enemies; record launches and confirm round-robin fairness, at least 0.65 combat seconds between launches, two-second personal cooldown, and 0.35-second telegraph. Stun/kill/move the selected enemy out of range. Preserve Warden's simultaneous burst. |
+| Deflect | Catch the nearest imminent shot among several; whiff spends cooldown; wall-blocked and expiring shots do not qualify. During tracing other threats remain dangerous and movement/dash remain active. |
+| Deflect resolution | Exercise valid clockwise trace, wrong order, early release, timeout, Escape, actual damage interruption, and death. Failed shots resume from their held position toward the player; remaining lifetime resumes. Kill the attacker while its shot is held and confirm the return direction uses its last position. |
+| Offense | Burst edge matches effective radius; reflected shots pierce each enemy once; Damage, Area, and per-hit criticals affect every intended attack. Area does not extend dash/Fire travel, parry windows, or Thunder count. |
+| Clocks | Combine drawing/perfect dodge/pause/upgrade menus. Choose 15% over 20%, preserve player responsiveness, stop active-real-time slow-motion duration in paused menus, keep presentation moving, and preserve wand cadence on cooldown resets. |
+| Offers | Always one elemental card and two distinct stat cards; rarity rolls independently. Legendary learning remains rank one. Mixed-rarity upgrades retain their awarded bonuses; stun caps at three seconds. |
+| Stats and XP | Check every additive stat, exact capped CDR previews, immediate maximum-health healing, fractional XP/overflow, triple ordinary drops, Luck rarity/crit/bonus drops, and XP Gain on bonus drops. |
+| Reveal input | Skip using click, Enter, or keys 1–3. Verify fixed rewards and no same-input selection, including held inputs and UI event processing order. Queue several levels and select without cosmetic delays. |
+| Readability | Check 16:9, 16:10, ultrawide, portrait, and smaller windows. Keep checkpoints readable, panel inside safe area, and the arena camera centered. Check card titles/benefits and Luck details for overflow. |
+| Feedback | Distinguish dash immunity, ordinary immunity, perfect dodge, caught/successful/failed Deflect in crowded combat. Repeated announcements replace each other. Criticals and chain links never shake per target. |
+| Accessibility | Reduced Flash retains stable outlines/text and softer particles. Reduced Shake suppresses impulses; camera bounds hold after impulses. Rarity remains recognizable by text and shapes. |
+| Cleanup | Die/retry/return to title while dashing, holding a shot, aiming, revealing, and showing confetti. Remove held shots, firing turns, slow motion, cooldown state, trails, announcement effects, and callbacks. Restore physics timestep on scene teardown. |
+| Authoring | Reapply the migration without duplicated named objects, changed existing GUIDs, multiplied balance values, or additional input wrappers. |
+
+No tests, builds, compilation checks, Play Mode sessions, validators, formatters,
+or profiling were requested for this implementation. Unity script imports and
+Editor scene/prefab authoring are implementation operations, not gameplay evidence.
+
+### UI/control follow-up — still unverified
+
+Check movement-directed dash (including idle fallback and changed input during
+travel), ranged shots at 9–12 units/26 speed, and 0.12-second timing windows. Inspect
+all four rarity cards together: readable Epic text; distinct static borders and
+unscaled reveals; no particles across benefits; hover/gamepad-keyboard focus;
+skip input consumption; Reduced Flash/Shake; narrow screens; retry cleanup.
+Existing movement/scheduler acceptance tests were updated but not run.
+
+### Larger shots / Deflect protection — pending
+
+Check larger hostile and reflected shots against walls and the player; danger
+sensing and catch timing must use the enlarged radius. A timed catch must block
+contact and projectile damage throughout drawing without interrupting the trace.
+Protection must end immediately on success, failure, Escape, timeout, or teardown;
+released failed shots must become dangerous again. Whiffs and elemental drawing
+remain vulnerable. Existing Deflect acceptance assertions were updated, not run.
+
+### Deflect misclick forgiveness — pending
+
+Without running checks: later exercise off-panel clicks, clicking/releasing away
+from checkpoint 1, dragging onto 1 while held, and releasing a partial stroke.
+Deflect must stay open and immune while the original deadline continues. A fresh
+valid trace must still complete. Wrong checkpoint order, timeout, and Escape must
+release the shot and end immunity, with visible broken-sigil/HUD feedback. Check
+ordinary elemental failures, Reduced Flash, repeated cues, and retry cleanup too.
+
+### Five-shooter cap / untimed Deflect — pending
+
+Acceptance coverage is authored, not run: reject a sixth shooter, permit a
+replacement after death, preserve normal spawns and Warden behavior at the cap,
+and reset counts on restart. Keep Deflect open/protected beyond three seconds and
+through wrong-order/partial/off-start retries; success returns the shot, Escape
+cancels it, and teardown clears it. Ordinary spell deadlines still apply.
